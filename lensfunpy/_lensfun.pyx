@@ -117,6 +117,7 @@ cdef extern from "lensfun.h":
         
         # calibration data
         float CropFactor
+        float AspectRatio
         float CenterX
         float CenterY
         lfLensCalibDistortion **CalibDistortion
@@ -633,6 +634,15 @@ cdef class Lens:
         def __get__(self):
             return self.lf.CropFactor
 
+    property aspect:
+        """
+        Aspect ratio of the images used for calibration measurements.
+        
+        :rtype: float
+        """
+        def __get__(self):
+            return self.lf.AspectRatio
+        
     property center_x:
         """
         
